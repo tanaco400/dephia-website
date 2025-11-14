@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conseil en Entreprise - DEPHIA-SERCOTRAN</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #2563eb;
+        }
+
+        .logo-icon {
+            background: #2563eb;
+            color: white;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-weight: 700;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .logo-dual {
+            font-size: 0.75rem;
+            color: #666;
+            font-weight: 400;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #666;
+            font-weight: 500;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #2563eb;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            display: inline-block;
+        }
+
+        .btn-outline {
+            border: 2px solid #2563eb;
+            color: #2563eb;
+            background: white;
+        }
+
+        .btn-outline:hover {
+            background: #2563eb;
+            color: white;
+        }
+
+        .btn-primary {
+            background: #f97316;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #ea580c;
+        }
+
+        .page-hero {
+            background: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            font-size: 2.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-hero p {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .intro-section {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .intro-section h2 {
+            font-size: 2rem;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .intro-section p {
+            font-size: 1.125rem;
+            color: #64748b;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .service-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 2.5rem;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            border-color: #f97316;
+            box-shadow: 0 12px 24px rgba(249, 115, 22, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: #fff7ed;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: #64748b;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features {
+            list-style: none;
+        }
+
+        .service-features li {
+            padding: 0.5rem 0;
+            color: #475569;
+            display: flex;
+            align-items: start;
+            gap: 0.75rem;
+        }
+
+        .service-features li:before {
+            content: "✓";
+            color: #f97316;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .methodology-section {
+            background: #f8fafc;
+            padding: 4rem 2rem;
+            margin: 4rem -2rem;
+        }
+
+        .methodology-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .methodology-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            color: #1e293b;
+            margin-bottom: 3rem;
+        }
+
+        .methodology-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .step-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: #f97316;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem;
+        }
+
+        .step-card h3 {
+            color: #1e293b;
+            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
+        }
+
+        .step-card p {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        .frameworks-section {
+            margin-top: 4rem;
+        }
+
+        .frameworks-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            color: #1e293b;
+            margin-bottom: 3rem;
+        }
+
+        .frameworks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .framework-card {
+            background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 2px solid #fed7aa;
+        }
+
+        .framework-card h3 {
+            color: #c2410c;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .framework-card p {
+            color: #7c2d12;
+            font-size: 0.95rem;
+        }
+
+        .roi-calculator {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 3rem;
+            margin-top: 4rem;
+        }
+
+        .roi-calculator h2 {
+            text-align: center;
+            color: #1e293b;
+            margin-bottom: 2rem;
+        }
+
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .input-group label {
+            font-weight: 600;
+            color: #1e293b;
+            font-size: 0.9rem;
+        }
+
+        .input-group input,
+        .input-group select {
+            padding: 0.75rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .input-group input:focus,
+        .input-group select:focus {
+            outline: none;
+            border-color: #f97316;
+        }
+
+        .roi-result {
+            background: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            color: white;
+            text-align: center;
+        }
+
+        .roi-result h3 {
+            margin-bottom: 1rem;
+        }
+
+        .roi-value {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .case-studies {
+            margin-top: 4rem;
+        }
+
+        .case-studies h2 {
+            text-align: center;
+            font-size: 2rem;
+            color: #1e293b;
+            margin-bottom: 3rem;
+        }
+
+        .case-study-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .case-study {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+        }
+
+        .case-study-image {
+            background: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
+            padding: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        .case-study-content {
+            padding: 2rem 2rem 2rem 0;
+        }
+
+        .case-study-content h3 {
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .case-study-meta {
+            color: #f97316;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .case-study-content p {
+            color: #64748b;
+            margin-bottom: 1.5rem;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .result-item {
+            text-align: center;
+            padding: 1rem;
+            background: #f8fafc;
+            border-radius: 8px;
+        }
+
+        .result-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #f97316;
+        }
+
+        .result-label {
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        footer {
+            background: #1e293b;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+
+            .services-grid,
+            .frameworks-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .case-study {
+                grid-template-columns: 1fr;
+            }
+
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .calculator-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="logo-icon">PC</div>
+                <div class="logo-text">
+                    <span>DEPHIA-SERCOTRAN</span>
+                    <span class="logo-dual">SASU</span>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">🏠 Accueil</a></li>
+                <li><a href="translation-services.html">⚡ Services de Traductions</a></li>
+                <li><a href="business-consulting.html" class="active">💼 Conseils aux Entreprises</a></li>
+            <div class="nav-buttons">
+                
+            </div>
+        </nav>
+    </header>
+
+    <section class="page-hero">
+        <h1>Conseil Stratégique en Entreprise</h1>
+        <p>Transformez vos défis commerciaux en opportunités de croissance stratégique</p>
+    </section>
+
+    <main class="main-content">
+        <section class="intro-section">
+            <h2>Votre Partenaire de Transformation</h2>
+            <p>Nous accompagnons les entreprises dans leurs défis stratégiques avec une approche pragmatique et orientée résultats. Notre expertise combine analyse approfondie, méthodologies éprouvées et solutions innovantes pour générer un impact mesurable.</p>
+        </section>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🎯</div>
+                <h3>Stratégie d'Entreprise</h3>
+                <p>Définition et mise en œuvre de stratégies de croissance adaptées à votre marché et vos objectifs.</p>
+                <ul class="service-features">
+                    <li>Analyse de positionnement stratégique</li>
+                    <li>Études de marché et analyse concurrentielle</li>
+                    <li>Planification stratégique à 3-5 ans</li>
+                    <li>Stratégies de croissance et diversification</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">⚙️</div>
+                <h3>Optimisation des Processus</h3>
+                <p>Amélioration de l'efficacité opérationnelle et réduction des coûts par l'optimisation des processus métier.</p>
+                <ul class="service-features">
+                    <li>Cartographie et analyse des processus</li>
+                    <li>Identification des goulots d'étranglement</li>
+                    <li>Mise en place de solutions d'amélioration</li>
+                    <li>Conduite du changement organisationnel</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🚀</div>
+                <h3>Développement Commercial</h3>
+                <p>Accélération de la croissance par le développement de stratégies commerciales et marketing performantes.</p>
+                <ul class="service-features">
+                    <li>Stratégies de go-to-market</li>
+                    <li>Optimisation du parcours client</li>
+                    <li>Développement de nouveaux canaux</li>
+                    <li>Programmes de fidélisation</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">💡</div>
+                <h3>Innovation & Transformation</h3>
+                <p>Accompagnement dans les projets d'innovation et de transformation digitale pour rester compétitif.</p>
+                <ul class="service-features">
+                    <li>Stratégie de transformation digitale</li>
+                    <li>Innovation produits et services</li>
+                    <li>Modernisation des systèmes d'information</li>
+                    <li>Gestion de projets complexes</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">📊</div>
+                <h3>Performance Financière</h3>
+                <p>Amélioration de la rentabilité et optimisation de la structure financière de votre entreprise.</p>
+                <ul class="service-features">
+                    <li>Analyse de rentabilité par segment</li>
+                    <li>Optimisation de la structure de coûts</li>
+                    <li>Business planning et prévisions</li>
+                    <li>KPI et tableaux de bord de pilotage</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🌍</div>
+                <h3>Développement International</h3>
+                <p>Stratégies d'expansion internationale et accompagnement dans la conquête de nouveaux marchés.</p>
+                <ul class="service-features">
+                    <li>Études de faisabilité internationale</li>
+                    <li>Stratégies d'entrée sur nouveaux marchés</li>
+                    <li>Adaptation produits et services</li>
+                    <li>Partenariats et alliances stratégiques</li>
+                </ul>
+            </div>
+        </div>
+
+        <section class="frameworks-section">
+            <h2>Nos Cadres Méthodologiques</h2>
+            <div class="frameworks-grid">
+                <div class="framework-card">
+                    <h3>Analyse SWOT Avancée</h3>
+                    <p>Évaluation approfondie de vos forces, faiblesses, opportunités et menaces pour identifier les leviers stratégiques prioritaires.</p>
+                </div>
+                <div class="framework-card">
+                    <h3>Matrice BCG & Portfolio</h3>
+                    <p>Analyse de votre portefeuille d'activités pour optimiser l'allocation des ressources et maximiser la création de valeur.</p>
+                </div>
+                <div class="framework-card">
+                    <h3>Lean Six Sigma</h3>
+                    <p>Méthodologie d'amélioration continue pour réduire les gaspillages et améliorer la qualité des processus.</p>
+                </div>
+                <div class="framework-card">
+                    <h3>Balanced Scorecard</h3>
+                    <p>Système de pilotage de la performance équilibrant indicateurs financiers et opérationnels pour une vision globale.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <section class="methodology-section">
+        <div class="methodology-container">
+            <h2>Notre Méthodologie d'Intervention</h2>
+            <div class="methodology-steps">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Diagnostic</h3>
+                    <p>Analyse approfondie de votre situation actuelle, identification des enjeux et opportunités.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Stratégie</h3>
+                    <p>Élaboration de recommandations stratégiques alignées avec vos objectifs business.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Mise en œuvre</h3>
+                    <p>Accompagnement dans le déploiement des solutions et conduite du changement.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3>Mesure & Optimisation</h3>
+                    <p>Suivi des résultats, ajustements et optimisation continue pour maximiser l'impact.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="main-content">
+        <div class="roi-calculator">
+            <h2>Calculateur de ROI Stratégique</h2>
+            <form class="calculator-grid">
+                <div class="input-group">
+                    <label>Chiffre d'affaires annuel</label>
+                    <input type="number" placeholder="1 000 000 €" id="ca">
+                </div>
+                <div class="input-group">
+                    <label>Objectif d'amélioration</label>
+                    <select id="objectif">
+                        <option value="croissance">Croissance du CA</option>
+                        <option value="marge">Amélioration des marges</option>
+                        <option value="efficacite">Efficacité opérationnelle</option>
+                        <option value="expansion">Expansion internationale</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Gain attendu (%)</label>
+                    <input type="number" placeholder="15" id="gain" min="1" max="100">
+                </div>
+                <div class="input-group">
+                    <label>Durée du projet (mois)</label>
+                    <select id="duree">
+                        <option value="3">3 mois</option>
+                        <option value="6">6 mois</option>
+                        <option value="12">12 mois</option>
+                        <option value="18">18 mois</option>
+                    </select>
+                </div>
+            </form>
+            <div class="roi-result">
+                <h3>Retour sur Investissement Estimé</h3>
+                <div class="roi-value">3.5x</div>
+                <p>Basé sur nos missions similaires</p>
+                <button class="btn btn-primary" style="margin-top: 1rem; background: white; color: #f97316;">Programmer une consultation</button>
+            </div>
+        </div>
+
+        <section class="case-studies">
+            <h2>Études de Cas</h2>
+            <div class="case-study-grid">
+                <div class="case-study">
+                    <div class="case-study-image">🏭</div>
+                    <div class="case-study-content">
+                        <h3>Transformation Digitale - Industrie Manufacturière</h3>
+                        <div class="case-study-meta">Secteur: Manufacturing | Durée: 12 mois</div>
+                        <p>Accompagnement d'un industriel dans sa transformation digitale : optimisation des processus de production, mise en place d'outils de pilotage en temps réel et formation des équipes.</p>
+                        <div class="results-grid">
+                            <div class="result-item">
+                                <div class="result-value">+35%</div>
+                                <div class="result-label">Productivité</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-value">-25%</div>
+                                <div class="result-label">Coûts opérationnels</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-value">+50%</div>
+                                <div class="result-label">Qualité produits</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-study">
+                    <div class="case-study-image">🚀</div>
+                    <div class="case-study-content">
+                        <h3>Expansion Internationale - Tech B2B</h3>
+                        <div class="case-study-meta">Secteur: SaaS | Durée: 8 mois</div>
+                        <p>Définition et mise en œuvre d'une stratégie d'expansion européenne pour une scale-up tech : étude de marché, go-to-market strategy, recrutement d'équipes locales et lancement commercial.</p>
+                        <div class="results-grid">
+                            <div class="result-item">
+                                <div class="result-value">5</div>
+                                <div class="result-label">Nouveaux marchés</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-value">€2.5M</div>
+                                <div class="result-label">ARR additionnel</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-value">+120%</div>
+                                <div class="result-label">Croissance CA</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-study">
+                    <div class="case-study-image">💡</div>
+                    <div class="case-study-content">
+                        <h3>Optimisation Commerciale - Services B2B</h3>
+                        <div class="case-study-meta">Secteur: Services professionnels | Durée: 6 mois</div>
+                        <p>Refonte complète du processus commercial et de la stratégie marketing : segmentation client, optimisation du parcours d'achat, mise en place d'un CRM et formation des équipes sales.</p>
+                        <div class="results-grid">
+                            <div class="result-item">
+                                <div class="result-value">+65%</div>
+                                <div class="result-label">Taux de conversion</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-value">-40%</div>
+                                <div class="result-label">Cycle de vente</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-value">+45%</div>
+                                <div class="result-label">Panier moyen</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+	 <div style="margin-bottom: 1.5rem;">
+      <a href="politique-confidentialite.html" style="color: white; text-decoration: none; margin: 0 1rem; opacity: 0.8; transition: opacity 0.3s;">Politique de confidentialité</a>
+      <span style="opacity: 0.5;">|</span>
+      <a href="mentions-legales.html" style="color: white; text-decoration: none; margin: 0 1rem; opacity: 0.8; transition: opacity 0.3s;">Mentions légales</a>
+    </div>
+        <p>&copy; 2025 DEPHIA-SERCOTRAN. Tous droits réservés.</p>
+        <p style="margin-top: 0.5rem;">📞 +33 0 985 135 488 | ✉️ contact@dephia-sercotran.org</p>
+    </footer>
+</body>
+</html>
