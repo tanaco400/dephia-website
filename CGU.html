@@ -91,6 +91,26 @@
             transform: translateY(-2px);
         }
 
+        .home-btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 500;
+        }
+
+        .home-btn:hover {
+            background: #1e40af;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
         .container {
             max-width: 900px;
             margin: 40px auto;
@@ -173,10 +193,10 @@
                 </div>
             </a>
             <nav>
-                <a href="translation.html" class="nav-btn">⚡ Services de Traductions</a>
-                <a href="strategie.html" class="nav-btn">💼 Conseils aux Entreprises</a>
-                <a href="finances.html" class="nav-btn">📊 Analyses Financières</a>
-                <a href="contact.html" class="nav-btn">📞 Nous contacter</a>
+                <a href="#services" class="nav-btn">⚡ Services de Traductions</a>
+                <a href="#conseils" class="nav-btn">💼 Conseils aux Entreprises</a>
+                <a href="#analyses" class="nav-btn">📊 Analyses Financières</a>
+                <a href="#contact" class="nav-btn">📞 Nous contacter</a>
             </nav>
         </div>
     </header>
@@ -236,12 +256,13 @@
             <h3>Droit applicable et attribution de juridiction</h3>
 
             <p>Tout litige en relation avec l'utilisation du site <a href="https://dephia-sercotran.org" target="_blank">https://dephia-sercotran.org</a> est soumis au droit français. En dehors des cas où la loi ne le permet pas, il est fait attribution exclusive de juridiction aux tribunaux compétents.</p>
-
-<div style="text-align: center; margin-top: 40px; padding-top: 30px; border-top: 2px solid #e5e7eb;">
-                <a href="index.html" class="home-btn">🏠 Retour à l'Accueil</a>            </div>
+            
+            <div style="text-align: center; margin-top: 40px; padding-top: 30px; border-top: 2px solid #e5e7eb;">
+                <a href="index.html" style="background: #2563eb; color: white; border: none; padding: 14px 35px; border-radius: 8px; cursor: pointer; font-size: 16px; text-decoration: none; display: inline-block; font-weight: 600; transition: all 0.3s ease;" onmouseover="this.style.background='#1e40af'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(37, 99, 235, 0.3)';" onmouseout="this.style.background='#2563eb'; this.style.transform='translateY(0)'; this.style.boxShadow='none';">🏠 Retour à l'Accueil</a>
+            </div>
         </div>
     </div>
-	
+
     <footer>
         <p>&copy; 2025 DEPHIA-SERCOTRAN SASU. Tous droits réservés.</p>
     </footer>
